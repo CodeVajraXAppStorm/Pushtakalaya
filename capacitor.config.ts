@@ -3,7 +3,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.hisabkitab.app',
   appName: 'हिसाब-किताब',
-  webDir: '.',
+  webDir: 'dist',
   bundledWebRuntime: false,
   server: {
     androidScheme: 'https'

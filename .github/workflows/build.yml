@@ -28,11 +28,6 @@ jobs:
       - name: Install Project Dependencies
         run: npm install
 
-      - name: Create Web Distribution Folder
-        run: |
-          mkdir -p dist
-          cp index.html main.js style.css dist/
-
       - name: Initialize Capacitor Android Project
         run: npx cap add android
 

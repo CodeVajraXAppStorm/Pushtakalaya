@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
 
       - name: Setup Java Environment (For Android)
         uses: actions/setup-java@v4
@@ -28,6 +27,11 @@ jobs:
 
       - name: Install Project Dependencies
         run: npm install
+
+      - name: Create Web Distribution Folder
+        run: |
+          mkdir -p dist
+          cp index.html main.js style.css dist/
 
       - name: Initialize Capacitor Android Project
         run: npx cap add android

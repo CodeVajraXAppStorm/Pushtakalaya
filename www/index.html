@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>हिसाब-किताब</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+
+  <header class="top">
+    <h1>हिसाब-किताब</h1>
+    <button id="tripsBtn" class="link">मेरी ट्रिप्स</button>
+  </header>
+  <div id="tripName" class="trip-name"></div>
+
+  <!-- ट्रिप स्क्रीन -->
+  <section id="tripView">
+
+    <div class="block">
+      <h2>कौन-कौन है?</h2>
+      <div id="peopleList" class="chips"></div>
+      <div class="row">
+        <input id="personInput" type="text" placeholder="दोस्त का नाम" autocomplete="off">
+        <button id="addPersonBtn" class="btn small">जोड़ो</button>
+      </div>
+    </div>
+
+    <div class="block" id="formBlock">
+      <h2 id="formTitle">खर्चा जोड़ो</h2>
+      <input id="titleInput" type="text" placeholder="किस चीज़ का? (जैसे चाय)" autocomplete="off">
+      <input id="amountInput" type="number" inputmode="decimal" placeholder="कितने रुपये?">
+      <label class="lbl" for="payerSelect">पैसे किसने दिए?</label>
+      <select id="payerSelect"></select>
+      <div class="lbl">किन-किन के बीच बँटेगा?</div>
+      <div id="splitList" class="checks"></div>
+      <button id="addExpenseBtn" class="btn">खर्चा सेव करो</button>
+      <button id="cancelEditBtn" class="btn ghost" hidden>रद्द करो</button>
+    </div>
+
+    <div class="block">
+      <h2>अब तक के खर्चे <span id="totalTag" class="tag"></span></h2>
+      <div id="expenseList"></div>
+    </div>
+
+    <button id="endTripBtn" class="btn big">ट्रिप खत्म, हिसाब दिखाओ</button>
+  </section>
+
+  <!-- हिसाब स्क्रीन -->
+  <section id="resultView" hidden>
+    <button id="backBtn" class="link">← खर्चे बदलो</button>
+    <div id="resultBody"></div>
+  </section>
+
+  <!-- ट्रिप्स स्क्रीन -->
+  <section id="tripsView" hidden>
+    <button id="backFromTripsBtn" class="link">← वापस</button>
+    <div class="block">
+      <h2>नई ट्रिप</h2>
+      <div class="row">
+        <input id="tripInput" type="text" placeholder="ट्रिप का नाम (जैसे गोवा)" autocomplete="off">
+        <button id="createTripBtn" class="btn small">बनाओ</button>
+      </div>
+    </div>
+    <div class="block">
+      <h2>सेव की हुई ट्रिप्स</h2>
+      <div id="tripsList"></div>
+    </div>
+  </section>
+
+</main>
+<script src="main.js"></script>
+</body>
+</html>

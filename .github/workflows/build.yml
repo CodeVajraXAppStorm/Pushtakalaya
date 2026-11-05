@@ -1,0 +1,48 @@
+name: Android Mobile Build
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Java Environment (For Android)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install Project Dependencies
+        run: npm install
+
+      - name: Initialize Capacitor Android Project
+        run: npx cap add android
+
+      - name: Sync Web Code into Android Asset Folders
+        run: npx cap sync android
+
+      - name: Build Android Release APK File
+        run: |
+          cd android
+          ./gradlew assembleRelease
+
+      - name: Upload Output APK to GitHub Action Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hisab-Kitab-Android-App
+          path: android/app/build/outputs/apk/release/app-release-unsigned.apk
+          retention-days: 7
